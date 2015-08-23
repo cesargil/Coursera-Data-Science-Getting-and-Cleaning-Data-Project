@@ -9,21 +9,21 @@ library(plyr)
 # Part 1 - Merges the training and the test sets to create one data set.
 # ------------------------------------
 # Reads training data, corresponding subject number and activity number, binds columns
-train_data    <- read.table("c:/temp/UCI HAR Dataset/train/X_train.txt")
-train_subject  <- read.table("c:/temp/UCI HAR Dataset/train/subject_train.txt")
-train_activity <- read.table("c:/temp/UCI HAR Dataset/train/y_train.txt")
+train_data     <- read.table("UCI HAR Dataset/train/X_train.txt")
+train_subject  <- read.table("UCI HAR Dataset/train/subject_train.txt")
+train_activity <- read.table("UCI HAR Dataset/train/y_train.txt")
 
 # Reads test data, corresponding subject number and activity number, binds columns
-test_data     <- read.table("c:/temp/UCI HAR Dataset/test/X_test.txt")
-test_subject  <- read.table("c:/temp/UCI HAR Dataset/test/subject_test.txt")
-test_activity <- read.table("c:/temp/UCI HAR Dataset/test/y_test.txt")
+test_data      <- read.table("UCI HAR Dataset/test/X_test.txt")
+test_subject   <- read.table("UCI HAR Dataset/test/subject_test.txt")
+test_activity  <- read.table("UCI HAR Dataset/test/y_test.txt")
 
 # Merges train and test datasets
 measurements <- rbind(train_data, test_data)
 subjects     <- rbind(train_subject, test_subject)
 activities   <- rbind(train_activity, test_activity)
 
-# Removes no more needed variables
+# Removes large, no more needed variables
 rm(train_data, test_data, train_subject, test_subject, train_activity, test_activity)
 
 # ------------------------------------
@@ -31,7 +31,7 @@ rm(train_data, test_data, train_subject, test_subject, train_activity, test_acti
 # ------------------------------------
 
 # Reads feature labels
-feature <- read.table("c:/temp/UCI HAR Dataset/features.txt", header=F, sep="", col.names=c("FeatureID", "FeatureName"))
+feature <- read.table("UCI HAR Dataset/features.txt", header=F, sep="", col.names=c("FeatureID", "FeatureName"))
 
 # Identifies the features that pertain to mean or standard deviation
 desired_features <- grep("(mean|std)\\(\\)", feature$FeatureName)
@@ -44,7 +44,7 @@ measurements <- measurements[, desired_features]
 # ------------------------------------
 
 # Reads activity labels
-activity_labels <- read.table("c:/temp/UCI HAR Dataset/activity_labels.txt", header=F, sep=" ", col.names=c("ActivityID", "ActivityName"))
+activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt", header=F, sep=" ", col.names=c("ActivityID", "ActivityName"))
 
 # Replaces activity numbers with their corresponding description
 activities <- activity_labels$ActivityName[ activities[,1] ]
