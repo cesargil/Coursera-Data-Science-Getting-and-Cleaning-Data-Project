@@ -5,7 +5,7 @@
  These fields identify the subject and activity for which measurements were collected.
 
  - `Subject` : unique integer number identifying the subject (1-30)
- - `Activity`: the description of the activity (WALKING, WALKING_UPSTAIRS,WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
+ - `Activity`: the description of the activity (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING)
 
 ## Measurement 
 
