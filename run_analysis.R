@@ -8,22 +8,22 @@ library(plyr)
 # ------------------------------------
 # Part 1 - Merges the training and the test sets to create one data set.
 # ------------------------------------
-# Reads training data, corresponding subject number and activity number, binds columns
+# Reads training data, corresponding subject number and activity number
 train_data     <- read.table("UCI HAR Dataset/train/X_train.txt")
 train_subject  <- read.table("UCI HAR Dataset/train/subject_train.txt")
 train_activity <- read.table("UCI HAR Dataset/train/y_train.txt")
 
-# Reads test data, corresponding subject number and activity number, binds columns
+# Reads test data, corresponding subject number and activity number
 test_data      <- read.table("UCI HAR Dataset/test/X_test.txt")
 test_subject   <- read.table("UCI HAR Dataset/test/subject_test.txt")
 test_activity  <- read.table("UCI HAR Dataset/test/y_test.txt")
 
-# Merges train and test datasets
+# Merges "train" and "test" datasets
 measurements <- rbind(train_data, test_data)
 subjects     <- rbind(train_subject, test_subject)
 activities   <- rbind(train_activity, test_activity)
 
-# Removes large, no more needed variables
+# Removes no more needed variables
 rm(train_data, test_data, train_subject, test_subject, train_activity, test_activity)
 
 # ------------------------------------
@@ -36,7 +36,7 @@ feature <- read.table("UCI HAR Dataset/features.txt", header=F, sep="", col.name
 # Identifies the features that pertain to mean or standard deviation
 desired_features <- grep("(mean|std)\\(\\)", feature$FeatureName)
 
-# Extracts only those from data
+# Extracts only those columns from data
 measurements <- measurements[, desired_features]
 
 # ------------------------------------
