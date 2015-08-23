@@ -19,4 +19,4 @@ The results are written to the file `tidy_averages.txt`.
 1. The data must be previously downloaded and unzipped to a folder named `UCI HAR Dataset`, under the current directory where the R script will be run.
 2. The package `plyr` is needed and must be previously installed.
 3. Execute the R script `run_analysis.R`. The script is self-contained and does all the processing.
-4. The resulting file `tidy_average.txt` will be written to the current directory.
+4. The resulting file `tidy_averages.txt` will be written to the current directory.
